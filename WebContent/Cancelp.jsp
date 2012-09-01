@@ -4,8 +4,8 @@
 	<form>
 		<field name="ticketid" type="digits">
 				<prompt bargein="false">please enter your ticket i d </prompt>
-		</field>
-		<block>
+		</field><!-- kuchbi type karo
+		--><block>
 			<submit next="TicketCancellation?action=cancelTicket"/>
 		</block>
 	</form>

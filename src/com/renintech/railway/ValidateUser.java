@@ -21,6 +21,7 @@ public class ValidateUser extends HttpServlet {
 	{
 	String action=request.getParameter("action");
 	if(action.equals("validateUser"))
+		//kuchbi
 	{
 		validateUser(request,response);
 		
