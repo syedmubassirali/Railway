@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+<%@ page import= "java.util.ArrayList"%>
+<%@ page import="java.util.HashMap" %>
+<% ArrayList ticket=(ArrayList)request.getAttribute("ticket");
+System.out.println("in array list");%>
+<form>
+<field name="ticket">
+
+<prompt> your ticket id and pnr number is...
+<%for(Object object:ticket)
+{
+	System.out.println("in loop");
+	HashMap map=(HashMap)object;
+	String tktid=(String)map.get("tktid");
+	String pnr=(String)map.get("pnr");
+	String trainName=(String)map.get("trainName");
+	%>
+	<%=Integer.parseInt(tktid)%> <break time="500"/>
+	<%=Integer.parseInt(pnr)%> <break time="500"/>
+	<%} %>
+</prompt>
+<field name="selection">
+			<prompt>if your booking is confirmed say yes otherwise say no<break time="500"/>
+			</prompt>
+			<grammar root="option">
+				<rule id="option">
+					<one-of>		
+						<item>yes</item>
+						<item>no</item>
+					</one-of>	
+				</rule>
+			</grammar>
+		</field>
+		<block>
+			<if cond="selection=='yes'">
+				<prompt>your call is transfering to operater </prompt>
+				<submit next=""/>
+			<elseif cond="selection=='no'"/>
+				 <submit next="Bookingticket?action=route" method="post"/>
+		</if>
+		</block>
+</form>
+</vxml>

@@ -1,0 +1,54 @@
+8
+
+dir
+2706
+http://192.168.1.250:81/svn/idealabs2012/railwayinqury12/trunk/RailwayEnquiry/WebContent/WEB-INF/lib
+http://192.168.1.250:81/svn/idealabs2012
+
+
+
+2012-04-21T08:41:24.977625Z
+2612
+ayush
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+62276a3a-8d8d-0342-9531-342a90ff8432
+
+ojdbc14(3).jar
+file
+
+
+
+
+2012-04-26T12:15:46.420553Z
+df40bba7fa52ac4c77b0c2652172fb71
+2012-04-21T08:41:24.977625Z
+2612
+ayush
+has-props
+
+servlet-api.jar
+file
+
+
+
+
+2012-04-26T12:15:46.435554Z
+8b0753b8fa779bc80c3f8db57b8b6372
+2012-04-21T08:41:24.977625Z
+2612
+ayush
+has-props
+

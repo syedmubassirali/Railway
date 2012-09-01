@@ -1,0 +1,66 @@
+8
+
+dir
+2706
+http://192.168.1.250:81/svn/idealabs2012/railwayinqury12/trunk/RailwayEnquiry
+http://192.168.1.250:81/svn/idealabs2012
+
+
+
+2012-04-21T08:41:24.977625Z
+2612
+ayush
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+62276a3a-8d8d-0342-9531-342a90ff8432
+
+build
+dir
+
+.classpath
+file
+
+
+
+
+2012-04-26T12:15:47.095592Z
+78c04717366b9ed1859e73701c5ee303
+2012-04-21T08:41:24.977625Z
+2612
+ayush
+has-props
+
+.project
+file
+
+
+
+
+2012-04-26T12:15:47.099592Z
+4443b1c02d24270aa95ab5ec41e13170
+2012-04-21T08:41:24.977625Z
+2612
+ayush
+has-props
+
+src
+dir
+
+WebContent
+dir
+
+.settings
+dir
+

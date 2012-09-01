@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+<%@ page session="true" %>
+<%@ page import="java.sql.*" %>
+<%
+Connection con=null;
+  try {
+	  Class.forName("oracle.jdbc.driver.OracleDriver");
+	   con=DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.1:1521:oracle","railwayinqury12i","automation");
+  }
+  catch (ClassNotFoundException e) {
+     System.out.println(e.toString());
+  }
+%>
+<field name="tktid">
+<% 
+String q="select max(tktid) from ticket";
+Statement t=con.createStatement();
+ResultSet tk=t.executeQuery(q);
+if(tk.next()) {
+String tktid=tk.getString(1);
+%><%=tktid %> 
+<%} %>
+</field>
+<field name="pnr">
+<%
+String q1="select max(pnr) from ticket";
+Statement p=con.createStatement();
+ResultSet pn=p.executeQuery(q1);
+if (pn.next()) {
+	String pnr=pn.getString(1);
+	%><%=pnr %> 
+	<%} %>
+</field>
+<%@ page import= "java.util.ArrayList"%>
+<%@ page import="java.util.HashMap" %>
+<% ArrayList ticket=(ArrayList)request.getAttribute("route");
+String npassengers=request.getParameter("npassengers");%>
+<form>
+<field name="userid" type="digits">
+				<prompt bargein="false">please enter your user id </prompt>
+</field>
+<field name="source">
+<prompt>please say the place from where you start....
+<%for(Object object:ticket)
+{
+	HashMap map=(HashMap)object;
+	String source=(String)map.get("source");
+	%>
+	<%=source %>
+	
+<%}%>
+</prompt>
+<grammar root="name">
+	<rule id="name">
+		<one-of>
+			<%for(Object object:ticket)
+				{
+					HashMap map=(HashMap)object;
+					String source=(String)map.get("source");
+			%>
+					<item><%=source %><tag> <![CDATA[  <%=source%> ]]>  </tag></item>
+	
+					<%}%>
+		</one-of>
+	</rule>
+</grammar>
+</field>
+<field name="destination">
+<prompt>please say the place  you want to reach....
+<%for(Object object:ticket)
+{
+	HashMap map=(HashMap)object;
+	String destination=(String)map.get("destination");
+	%>
+	<%=destination %>
+	
+<%}%>
+</prompt>
+<grammar root="name">
+				<rule id="name">
+					<one-of>
+						<%for(Object object:ticket)
+							{
+								HashMap map=(HashMap)object;
+								String destination=(String)map.get("destination");
+					%>
+						<item><%=destination %><tag> <![CDATA[  <%=destination%> ]]>  </tag></item>
+	
+			<%}%>
+					</one-of>
+				</rule>
+			</grammar>
+</field>
+<field name="month">
+				<prompt>please select the month....
+			january,february,february,april,may,june,july,august,september,october,november,december
+
+</prompt>
+<grammar root="month">
+				<rule id="month">
+					<one-of>
+			
+						<item>jan</item>		
+						<item>feb</item>
+						<item>mar</item>
+						<item>apr</item>
+						<item>may</item>
+						<item>jun</item>
+						<item>jul</item>
+						<item>aug</item>
+						<item>sep</item>
+						<item>oct</item>
+						<item>nov</item>
+						<item>dec</item>
+					</one-of>
+				</rule>
+	
+			</grammar>
+</field>
+<field name="date" type="digits">
+				<prompt bargein="false">please enter the date of travelling </prompt>
+</field>	
+<field name="passengers" type="digits">
+				<prompt bargein="false">please select the number of passengers </prompt>
+</field>	
+<block>
+	<submit next="TicketBooked?action=bookTicket" method="post"/>
+</block>
+</form>
+</vxml>
